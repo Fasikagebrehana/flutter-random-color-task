@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_random_color_task/utils/color_utils.dart';
+import 'utils/color_utils.dart';
 
 /// The main entry point of the application.
 void main() {
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/// A stateful widget that displays "Hello there" and changes the background color on tap.
+/// stateful widget that displays "Hello there" and changes the background color
 class ColorChanger extends StatefulWidget {
   const ColorChanger({super.key});
 
@@ -35,6 +35,9 @@ class ColorChanger extends StatefulWidget {
 class _ColorChangerState extends State<ColorChanger> {
   Color _backgroundColor = Colors.white;
   int _tapCount = 0;
+
+  /// Duration for the background color transition animation.
+  static const _animationDuration = Duration(milliseconds: 500);
 
   /// Changes the background color to a random color and increments the tap count.
   void _changeColor() {
@@ -54,9 +57,10 @@ class _ColorChangerState extends State<ColorChanger> {
 
   /// Determines the text color based on background luminance for readability.
   Color _getTextColor() {
-    final luminance = _backgroundColor.computeLuminance();
-    
-    return luminance > 0.5 ? Colors.black : Colors.white;
+    const num = 0.5;
+    final brightness = _backgroundColor.computeLuminance();
+
+    return brightness > num ? Colors.black : Colors.white;
   }
 
   @override
@@ -64,7 +68,7 @@ class _ColorChangerState extends State<ColorChanger> {
     return GestureDetector(
       onTap: _changeColor,
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 500),
+        duration: _animationDuration,
         color: _backgroundColor,
         child: Stack(
           children: [

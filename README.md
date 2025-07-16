@@ -96,7 +96,7 @@ Verified with flutter analyze for solid_lints compliance.
 Screenshots
 Main Screen	Color Change in Action
 
-Replace the files screenshot1.png and screenshot2.gif with your actual screenshots or demo GIF.
+Replace the files screenshot1.jpg and screenshot2.jpg with your actual screenshots or demo GIF.
 
 Notes
 The app prioritizes quality, as per the task requirements, with a focus on clean code, user experience, and accessibility.
