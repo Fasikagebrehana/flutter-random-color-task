@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-//  A stateful widget that displays "Hello there" and changes the background color on tap.
 class ColorChanger extends StatefulWidget {
   const ColorChanger({super.key});
 
@@ -41,8 +40,16 @@ class _ColorChangerState extends State<ColorChanger> {
     });
   }
 
+  void _reset() {
+    setState(() {
+      _backgroundColor = Colors.white;
+      _tapCount = 0;
+    });
+  }
+
   Color _getTextColor() {
     final brightnessLevel = _backgroundColor.computeLuminance();
+    
     return brightnessLevel > 0.5 ? Colors.black : Colors.white;
   }
 
@@ -79,6 +86,18 @@ class _ColorChangerState extends State<ColorChanger> {
                 style: TextStyle(
                   fontSize: 16,
                   color: _getTextColor(),
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 16,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: FloatingActionButton(
+                  onPressed: _reset,
+                  backgroundColor: _getTextColor(),
+                  child: const Icon(Icons.refresh, color: Colors.grey),
                 ),
               ),
             ),
